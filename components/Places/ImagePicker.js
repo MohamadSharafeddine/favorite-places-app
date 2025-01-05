@@ -10,17 +10,17 @@ import { Colors } from "../../constants/colors";
 
 export default function ImagePicker() {
   const [pickedImage, setPickedImage] = useState();
-  const [camerPermissionInformation, requestPermission] =
+  const [cameraPermissionInformation, requestPermission] =
     useCameraPermissions();
 
   async function verifyPermissions() {
-    if (camerPermissionInformation.status === PermissionStatus.UNDETERMINED) {
+    if (cameraPermissionInformation.status === PermissionStatus.UNDETERMINED) {
       const permissionResponse = await requestPermission();
 
       return permissionResponse.granted;
     }
 
-    if (camerPermissionInformation.status === PermissionStatus.DENIED) {
+    if (cameraPermissionInformation.status === PermissionStatus.DENIED) {
       Alert.alert(
         "Insufficient Permissions!",
         "You need to grant camera permissions to use this app."
@@ -72,6 +72,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: Colors.primary100,
     borderRadius: 4,
+    overflow: "hidden",
   },
   image: {
     width: "100%",
