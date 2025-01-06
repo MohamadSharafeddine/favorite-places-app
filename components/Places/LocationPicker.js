@@ -30,7 +30,6 @@ export default function LocationPicker({ onPickLocation }) {
       };
 
       setPickedLocation(mapPickedLocation);
-      // onPickLocation(mapPickedLocation);
     }
   }, [route, isFocused]);
 
