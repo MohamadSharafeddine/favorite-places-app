@@ -8,9 +8,11 @@ import {
   useForegroundPermissions,
 } from "expo-location";
 import { getMapPreview } from "../../util/location";
+import { useNavigation } from "@react-navigation/native";
 
 export default function LocationPicker() {
   const [pickedLocation, setPickedLocation] = useState();
+  const navigation = useNavigation();
   const [locationPermissionInformation, requestPermission] =
     useForegroundPermissions();
 
@@ -50,7 +52,9 @@ export default function LocationPicker() {
     console.log(location);
   }
 
-  function pickLocationHandler() {}
+  function pickOnMapHandler() {
+    navigation.navigate("Map");
+  }
 
   let locationPreview = <Text>No location picked yet.</Text>;
 
@@ -70,7 +74,7 @@ export default function LocationPicker() {
         <OutlinedButton icon="location" onPress={getLocationHandler}>
           Locate User
         </OutlinedButton>
-        <OutlinedButton icon="map" onPress={pickLocationHandler}>
+        <OutlinedButton icon="map" onPress={pickOnMapHandler}>
           Pick on Map
         </OutlinedButton>
       </View>
