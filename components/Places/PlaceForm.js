@@ -27,7 +27,7 @@ export default function PlaceForm({ onCreatePlace }) {
     const placeData = new Place(
       enteredTitle || "Title not available",
       selectedImage || "https://via.placeholder.com/100",
-      pickedLocation || { address: "Address not available", lat: 0, lng: 0 }
+      pickedLocation || { address: "Thanks Google!", lat: 0, lng: 0 }
     );
     console.log("placeData", placeData);
     onCreatePlace(placeData);
