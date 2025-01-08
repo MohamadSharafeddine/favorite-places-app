@@ -7,7 +7,7 @@ export default function AllPlaces({ route }) {
   const [loadedPlaces, setLoadedPlaces] = useState([]);
   const isFocused = useIsFocused();
   useEffect(() => {
-    if (!isFocused && route.params) {
+    if (isFocused && route.params) {
       setLoadedPlaces((currentPlaces) => [
         ...currentPlaces,
         route.params.place,

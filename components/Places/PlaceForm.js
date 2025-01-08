@@ -24,7 +24,12 @@ export default function PlaceForm({ onCreatePlace }) {
   }, []);
 
   function savePlaceHandler() {
-    const placeData = new Place(enteredTitle, selectedImage, pickedLocation);
+    const placeData = new Place(
+      enteredTitle || "Title not available",
+      selectedImage || "https://via.placeholder.com/100",
+      pickedLocation || { address: "Address not available", lat: 0, lng: 0 }
+    );
+    console.log("placeData", placeData);
     onCreatePlace(placeData);
   }
 
