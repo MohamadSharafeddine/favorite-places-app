@@ -6,10 +6,35 @@ import AddPlace from "./screens/AddPlace";
 import IconButton from "./components/UI/IconButton";
 import { Colors } from "./constants/colors";
 import Map from "./screens/Map";
+import * as SplashScreen from "expo-splash-screen";
+import { useEffect, useState } from "react";
+import { initializeDatabase } from "./util/database";
 
 const Stack = createNativeStackNavigator();
 
+SplashScreen.preventAutoHideAsync();
+
 export default function App() {
+  const [dbInitialized, setDbInitialized] = useState(false);
+
+  useEffect(() => {
+    async function initializeDb() {
+      try {
+        await initializeDatabase();
+        setDbInitialized(true);
+        await SplashScreen.hideAsync();
+      } catch (error) {
+        console.error("Failed to initialize the database", error);
+      }
+    }
+
+    initializeDb();
+  }, []);
+
+  if (!dbInitialized) {
+    return null;
+  }
+
   return (
     <>
       <StatusBar style="dark" />
