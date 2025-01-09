@@ -80,7 +80,7 @@ export default function LocationPicker({ onPickLocation }) {
       lng: location.coords.longitude,
     });
 
-    console.log(location);
+    // console.log(location);
   }
 
   function pickOnMapHandler() {

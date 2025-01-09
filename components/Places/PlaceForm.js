@@ -29,7 +29,7 @@ export default function PlaceForm({ onCreatePlace }) {
       selectedImage || "https://via.placeholder.com/100",
       pickedLocation || { address: "Thanks Google!", lat: 0, lng: 0 }
     );
-    console.log("placeData", placeData);
+    // console.log("placeData", placeData);
     onCreatePlace(placeData);
   }
 

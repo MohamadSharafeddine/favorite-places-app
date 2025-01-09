@@ -45,7 +45,7 @@ export default function ImagePicker({ onTakeImage }) {
     });
 
     setPickedImage(image.assets[0].uri);
-    console.log("image", pickedImage);
+    // console.log("pickedImage", pickedImage);
     onTakeImage(image.assets[0].uri);
   }
 
