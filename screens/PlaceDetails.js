@@ -6,7 +6,13 @@ import { fetchPlaceWithId } from "../util/database";
 
 export default function PlaceDetails({ route, navigation }) {
   const [fetchedPlace, setFetchedPlace] = useState({});
-  function showOnMapHandler() {}
+
+  function showOnMapHandler() {
+    navigation.navigate("Map", {
+      initialLat: fetchedPlace.location.lat,
+      initialLng: fetchedPlace.location.lng,
+    });
+  }
 
   const selectedPlaceId = route.params.placeId;
 
@@ -51,8 +57,6 @@ const styles = StyleSheet.create({
     minHeight: 300,
   },
   locationContainer: {
-    // marginVertical: 20,
-    // width: "100%",
     justifyContent: "center",
     alignItems: "center",
   },

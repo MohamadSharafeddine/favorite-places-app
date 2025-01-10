@@ -76,7 +76,14 @@ export const fetchPlaceWithId = async (id) => {
       id
     );
     console.log("Fetched place with id", firstRow);
-    return firstRow;
+    const place = new Place(
+      firstRow.title,
+      firstRow.imageUri,
+      { address: firstRow.address, lat: firstRow.lat, lng: firstRow.lng },
+      firstRow.id
+    );
+    console.log("Place", place);
+    return place;
   } catch (error) {
     console.error("Failed to fetch place with id", error);
     throw error;
